@@ -18,11 +18,10 @@
 </head>
 
 <body>
+    <div class="mouse-glow"></div>
     <div id="header">
         <div class="container">
             <nav>
-                <img src="images/logo.png" class="logo" alt="Portfolio Logo">
-
                 <ul id="sidemenu">
                     <li><a href="#header">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -36,14 +35,24 @@
         </div>
 
         <div class="header-text">
-            <p class="role-title">Frontend Developer | Web3 Enthusiast</p>
+            <p class="role-title">Frontend Developer | Web3 Enthusiast<span class="trader-role-label"> | Trader</span>
+            </p>
             <h1>Hi, I'm <span>Khushi Vasava</span></h1>
-            <p class="minimal-tagline">Building dashboards, DApps and real-time interfaces.</p>
+            <p class="minimal-tagline"><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
 
             <div class="header-buttons">
                 <a href="#portfolio" class="btn btn-hero">View Projects</a>
                 <a href="images/Resume.pdf" download class="btn btn-hero btn-secondary">Download Resume</a>
             </div>
+            <button class="btn-discover" id="discoverBtn" onclick="discoverToggle()">
+                <span id="discoverBtnText">Discover Another Side</span>
+                <span class="btn-discover-arrow" id="discoverArrow">→</span>
+            </button>
+        </div>
+
+        <!-- Realistic trading chart - shown only in trader mode -->
+        <div class="trading-chart-wrapper">
+            <canvas id="tradingChart" width="480" height="260"></canvas>
         </div>
 
     </div>
@@ -51,22 +60,25 @@
     <div id="about">
         <div class="container">
             <div class="row">
-                <div class="about-col-1">
-                    <img src="images/user.png">
+                <div class="about-col-1 reveal">
+                    <img src="images/user-new.jpg">
                 </div>
-                <div class="about-col-2">
+                <div class="about-col-2 reveal">
                     <h1 class="sub-title">About Me</h1>
                     <p class="about-text">I am a final-year Computer Science student specializing in frontend
                         development and Web3 applications. I have built multiple projects including decentralized
                         applications, AI-powered tools, and real-time dashboards. I am passionate about creating
                         high-performance, user-friendly interfaces and continuously improving my skills in modern web
                         technologies and blockchain.</p>
+                    <p class="trader-text">I am also actively involved in financial markets, applying technical analysis
+                        and risk management through trading. This experience strengthens my analytical thinking and
+                        data-driven decision making — skills that directly translate into better engineering.</p>
 
                     <div class="tab-titles">
                         <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
                         <p class="tab-links" onclick="opentab('experience')">Experience</p>
                         <p class="tab-links" onclick="opentab('education')">Education</p>
-
+                        <p class="tab-links trader-tab" onclick="opentab('trading')">Analytical</p>
                     </div>
                     <div class="tab-contents active-tab" id="skills">
                         <ul>
@@ -74,6 +86,16 @@
                             <li><span>Web3</span><br>Solidity, Smart Contracts, Ethers.js, MetaMask</li>
                             <li><span>Backend</span><br>Node.js, MongoDB, JWT Authentication</li>
                             <li><span>Tools</span><br>Git, Postman, Chart.js</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-contents trader-tab-content" id="trading">
+                        <ul>
+                            <li><span>Market Analysis</span><br>Technical Analysis, Chart Patterns, Price Action</li>
+                            <li><span>Risk Management</span><br>Position Sizing, Stop Loss Strategy, R:R Ratios</li>
+                            <li><span>Pattern Recognition</span><br>Candlestick Patterns, Support & Resistance, Trends
+                            </li>
+                            <li><span>Technical Indicators</span><br>EMA, RSI, MACD, Volume Analysis</li>
                         </ul>
                     </div>
 
@@ -101,7 +123,7 @@
 
     <div id="services">
         <div class="container">
-            <h1 class="sub-title">What I Build</h1>
+            <h1 class="sub-title reveal">What I Build</h1>
             <div class="services-list">
                 <div>
                     <i class="fa-solid fa-code"></i>
@@ -137,7 +159,7 @@
             <h1 class="sub-title">My Work</h1>
             <div class="work-list">
 
-                <div class="work">
+                <div class="work reveal">
                     <img src="images/work-ai-workflow.png">
                     <div class="layer">
                         <h3>AI Workflow Builder</h3>
@@ -148,21 +170,24 @@
                     </div>
                 </div>
 
-                <div class="work">
-                    <img src="images/work-1.png">
+                <div class="work reveal">
+                    <img src="images/work-twitterdapp.png">
                     <div class="layer">
-                        <h3>Portfolio Website</h3>
-                        <p>A personal portfolio website showcasing my projects and skills in web development.</p>
-                        <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <h3>Twitter DApp</h3>
+                        <p>A Web3 decentralized micro-blogging platform where users can post notes via smart contracts.
+                        </p>
+                        <a href="https://twitter-dapp-tan.vercel.app/" target="_blank"><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
 
-                <div class="work">
-                    <img src="images/work-2.png">
+                <div class="work reveal">
+                    <img src="images/work-shareablenotes.png">
                     <div class="layer">
-                        <h3>Voting Dapp</h3>
-                        <p>A decentralized application for secure, transparent voting on the blockchain.</p>
-                        <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <h3>Shareable Notes</h3>
+                        <p>A web application for creating, managing, and sharing notes effortlessly.</p>
+                        <a href="https://shareablenotes.vercel.app/" target="_blank"><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
 
@@ -178,7 +203,7 @@
     <div id="contact">
         <div class="container">
             <div class="row">
-                <div class="contact-left">
+                <div class="contact-left reveal">
                     <h1 class="sub-title">Contact Me</h1>
                     <p><i class="fa-solid fa-paper-plane"></i>khushivasava8@gmail.com</p>
                     <p><i class="fa-solid fa-phone"></i>+91 6352109714</p>
@@ -187,21 +212,21 @@
                                 class="fa-brands fa-linkedin"></i></a>
                         <a href="https://github.com/Katch-me"><i class="fa-brands fa-github"></i></a>
                     </div>
-                    <a href="images/Resume.pdf" download target="_blank" class="btn btn2">Download CV</a>
+                    <a href="images/Resume.pdf" download target="_blank" class="btn btn-hero">Download CV</a>
                 </div>
-                <div class="contact-right">
+                <div class="contact-right reveal">
                     <form>
-                        <input type="text" name="Name" placeholder="Your name" required>
-                        <input type="email" name="Email" placeholder="Your email" required>
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
                         <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                        <button type="submit" class="btn btn2">Submit</button>
+                        <button type="submit" class="btn btn-hero">Submit message</button>
                     </form>
                 </div>
 
             </div>
         </div>
         <div class="copyright">
-            <p>Copyright Khushi. Made with <i class="fa-solid fa-heart"></i> by Easy Tutorials</p>
+            <p>&copy; 2026 Khushi Vasava. All rights reserved.</p>
         </div>
     </div>
 
@@ -233,6 +258,240 @@
         function closemenu() {
             sidemenu.style.right = "-200px";
         }
+
+        // Global arrays for typing animation (accessed by discoverToggle)
+        var devTextArray = [
+            "Building seamless Web3 DApps.",
+            "Designing interactive UI/UX.",
+            "Crafting high-performance dashboards."
+        ];
+        var traderTextArray = [
+            "Building seamless Web3 DApps.",
+            "Designing interactive UI/UX.",
+            "Crafting high-performance dashboards.",
+            "Reading the markets, managing risk."
+        ];
+        var textArray = devTextArray.slice();
+
+        // Scroll Reveal & Typing Animation init
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Mouse Glow Effect
+            const glow = document.querySelector('.mouse-glow');
+            document.addEventListener('mousemove', (e) => {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+                if (glow.style.opacity === "0" || glow.style.opacity === "") {
+                    glow.style.opacity = "1";
+                }
+            });
+
+            // Handle scroll reveals
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+
+            // Typing Effect Logic
+            const typedTextSpan = document.querySelector(".typed-text");
+            const cursorSpan = document.querySelector(".cursor");
+
+            // Typing Effect Logic uses globally-scoped arrays
+            const typingDelay = 100;
+            const erasingDelay = 50;
+            const newTextDelay = 2000;
+            let textArrayIndex = 0;
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < textArray[textArrayIndex].length) {
+                    if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, typingDelay);
+                }
+                else {
+                    cursorSpan.classList.remove("typing");
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, erasingDelay);
+                }
+                else {
+                    cursorSpan.classList.remove("typing");
+                    textArrayIndex++;
+                    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                    setTimeout(type, typingDelay + 1100);
+                }
+            }
+
+            if (textArray.length) setTimeout(type, newTextDelay + 250);
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".work"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2
+        });
+
+        VanillaTilt.init(document.querySelectorAll(".services-list div"), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1
+        });
+    </script>
+
+    <script>
+        // Dual-Mode Toggle: Discover Another Side
+        let traderModeActive = false;
+
+        function discoverToggle() {
+            traderModeActive = !traderModeActive;
+            const body = document.body;
+            const btnText = document.getElementById('discoverBtnText');
+            const arrow = document.getElementById('discoverArrow');
+
+            if (traderModeActive) {
+                body.classList.add('trader-mode');
+                btnText.textContent = 'Back to Developer Mode';
+                arrow.style.transform = 'rotate(180deg)';
+                // Swap typing array to include trader phrase
+                textArray.length = 0;
+                traderTextArray.forEach(t => textArray.push(t));
+            } else {
+                body.classList.remove('trader-mode');
+                btnText.textContent = 'Discover Another Side';
+                arrow.style.transform = '';
+                // Reset typing array to dev phrases
+                textArray.length = 0;
+                devTextArray.forEach(t => textArray.push(t));
+            }
+        }
+
+        // ---- Decorative Candlestick Chart — Bottom-Right 35% ----
+        function drawTradingChart() {
+            const canvas = document.getElementById('tradingChart');
+            if (!canvas) return;
+            const header = document.getElementById('header');
+            const W = header ? header.offsetWidth : 1440;
+            const H = header ? header.offsetHeight : 720;
+            canvas.width = W;
+            canvas.height = H;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, W, H);
+
+            // Chart occupies right 60%: chartLeft at 38% from left
+            const chartLeft = W * 0.38;
+            const chartRight = W * 0.99;
+            const chartTop = H * 0.08;
+            const chartBottom = H * 0.92;
+            const chartW = chartRight - chartLeft;
+            const chartH = chartBottom - chartTop;
+
+            // Volatile 3-phase chart: big move → range consolidation → breakout [open,close,low,high]
+            const candles = [
+                // Phase 1: Initial volatile push up
+                [30, 42, 26, 45], [42, 36, 31, 47], [36, 50, 33, 53], [50, 44, 40, 56],
+                [44, 60, 42, 63], [60, 52, 48, 65], [52, 66, 50, 68], [66, 58, 54, 70],
+
+                // Phase 2: Range / consolidation (price oscillates between 55-72)
+                [58, 68, 54, 72], [68, 62, 58, 73], [62, 70, 59, 74], [70, 63, 57, 72],
+                [63, 69, 60, 74], [69, 61, 57, 70], [61, 68, 58, 73], [68, 64, 59, 71],
+
+                // Phase 3: Strong breakout and continuation up
+                [64, 76, 62, 78], [76, 70, 67, 80], [70, 84, 68, 87], [84, 79, 76, 89],
+                [79, 92, 77, 95], [92, 87, 84, 96], [87, 96, 85, 98]
+            ];
+
+            const priceMin = 22, priceMax = 100;
+            const nC = candles.length;
+            const slotW = chartW / nC;
+            const bodyW = Math.max(slotW * 0.48, 4);
+            const toX = (i) => chartLeft + (i + 0.5) * slotW;
+            const toY = (p) => chartBottom - ((p - priceMin) / (priceMax - priceMin)) * chartH;
+
+            // Faint grid (no labels)
+            ctx.setLineDash([3, 8]);
+            for (let i = 1; i <= 5; i++) {
+                const y = chartTop + (i / 6) * chartH;
+                ctx.strokeStyle = 'rgba(0,168,232,0.08)';
+                ctx.lineWidth = 0.6;
+                ctx.beginPath(); ctx.moveTo(chartLeft - 10, y); ctx.lineTo(chartRight, y); ctx.stroke();
+            }
+            for (let i = 0; i <= 4; i++) {
+                const x = chartLeft + (i / 4) * chartW;
+                ctx.strokeStyle = 'rgba(0,168,232,0.05)';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath(); ctx.moveTo(x, chartTop); ctx.lineTo(x, chartBottom); ctx.stroke();
+            }
+            ctx.setLineDash([]);
+
+            // Draw candles
+            candles.forEach(([open, close, low, high], i) => {
+                const isBull = close >= open;
+                const cx = toX(i);
+                const bTop = toY(Math.max(open, close));
+                const bBot = toY(Math.min(open, close));
+                const bH = Math.max(bBot - bTop, 1.5);
+
+                // Wick
+                ctx.strokeStyle = isBull ? 'rgba(0,200,255,0.7)' : 'rgba(0,130,190,0.45)';
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 0;
+                ctx.beginPath(); ctx.moveTo(cx, toY(high)); ctx.lineTo(cx, toY(low)); ctx.stroke();
+
+                if (isBull) {
+                    ctx.shadowColor = '#00d4ff';
+                    ctx.shadowBlur = 7;
+                    ctx.fillStyle = '#00a8e8';
+                    ctx.fillRect(cx - bodyW / 2, bTop, bodyW, bH);
+                    ctx.shadowBlur = 12;
+                    ctx.globalAlpha = 0.4;
+                    ctx.fillRect(cx - bodyW / 2, bTop, bodyW, bH);
+                    ctx.globalAlpha = 1;
+                    ctx.shadowBlur = 0;
+                } else {
+                    ctx.fillStyle = 'rgba(0,50,110,0.75)';
+                    ctx.fillRect(cx - bodyW / 2, bTop, bodyW, bH);
+                    ctx.strokeStyle = 'rgba(0,168,232,0.45)';
+                    ctx.lineWidth = 0.8;
+                    ctx.strokeRect(cx - bodyW / 2, bTop, bodyW, bH);
+                }
+            });
+
+            // Bottom fade — chart disappears at section boundary
+            const fade = ctx.createLinearGradient(0, chartBottom - chartH * 0.18, 0, chartBottom + 10);
+            fade.addColorStop(0, 'rgba(0,0,0,0)');
+            fade.addColorStop(1, 'rgba(0,0,0,1)');
+            ctx.fillStyle = fade;
+            ctx.fillRect(chartLeft - 20, chartBottom - chartH * 0.18, chartW + 30, chartH * 0.22);
+        }
+        document.addEventListener('DOMContentLoaded', () => { drawTradingChart(); });
     </script>
 
 </body>

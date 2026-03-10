@@ -19,11 +19,42 @@ body {
     color: white;
 }
 
+p {
+    line-height: 1.6;
+}
+
+.mouse-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 168, 232, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+    /* Below content but above background */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    /* Hidden initially, shown on JS load/move */
+}
+
+/* Ensure content layered above glow */
+#header,
+#about,
+#services,
+#portfolio,
+#contact {
+    position: relative;
+    z-index: 2;
+}
+
 #header {
     /*image added here */
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(to bottom, #000000, #9e719e);
+    background-image: linear-gradient(to bottom, #000000, #001233);
     background-size: cover;
     background-position: center;
 
@@ -36,8 +67,19 @@ body {
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 15px 10%;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -59,18 +101,19 @@ nav ul li a {
 
 nav ul li a::after {
     content: '';
-    width: 0;
+    width: 100%;
     height: 3px;
-    background: #adfd4c;
+    background: #00a8e8;
     position: absolute;
     left: 0;
     bottom: -6px;
-    transition: width 0.5s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
 }
 
 nav ul li a:hover::after {
-    width: 100%;
-
+    transform: scaleX(1);
 }
 
 /*----------------Hero Section Styles----------------*/
@@ -83,7 +126,7 @@ nav ul li a:hover::after {
 
 .role-title {
     font-size: 14px;
-    color: #adfd4c;
+    color: #00a8e8;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -105,6 +148,46 @@ nav ul li a:hover::after {
     max-width: 700px;
 }
 
+.typed-text {
+    font-weight: 400;
+    color: #00a8e8;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 100%;
+    background-color: #fff;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+}
+
+.cursor.typing {
+    animation: none;
+}
+
+@keyframes blink {
+    0% {
+        background-color: #fff;
+    }
+
+    49% {
+        background-color: #fff;
+    }
+
+    50% {
+        background-color: transparent;
+    }
+
+    99% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: #fff;
+    }
+}
+
 .header-buttons {
     margin-top: 0;
 }
@@ -123,17 +206,18 @@ nav ul li a:hover::after {
 }
 
 .header-buttons .btn-hero:hover {
-    background: #5f6a52;
-    border-color: #5f6a52;
+    background: #00a8e8;
+    border-color: #00a8e8;
+    color: #000;
     transform: scale(1.05);
     /* Slight scale */
-    box-shadow: 0 0 10px rgba(95, 106, 82, 0.5);
+    box-shadow: 0 0 15px rgba(173, 253, 76, 0.4);
     /* Subtle glow */
 }
 
 .header-buttons .btn-secondary {
-    background: #5f6a52;
-    border: 1px solid #5f6a52;
+    background: #003566;
+    border: 1px solid #003566;
 }
 
 .header-buttons .btn-secondary:hover {
@@ -145,14 +229,18 @@ nav ul li a:hover::after {
 
 
 .header-text h1 span {
-    color: #8eff03;
+    background: linear-gradient(90deg, #00a8e8, #00f2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
 }
 
 /*------------------ about ------------------*/
 #about {
     padding: 80px 0;
     color: #ababab;
-    background-image: linear-gradient(to bottom, #9e719e, #000000);
+    background-image: linear-gradient(to bottom, #001233, #000000);
 }
 
 .row {
@@ -163,12 +251,20 @@ nav ul li a:hover::after {
 
 .about-col-1 {
     flex-basis: 35%;
-
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .about-col-1 img {
     width: 100%;
-    border-radius: 15px;
+    height: 500px;
+    object-fit: cover;
+    object-position: center 95%;
+    /* Focuses almost entirely on the bottom */
+    transform: scale(1.1);
+    /* Zooms in slightly */
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-col-2 {
@@ -199,7 +295,7 @@ nav ul li a:hover::after {
     content: '';
     width: 0;
     height: 3px;
-    background-color: #adfd4c;
+    background-color: #00a8e8;
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -217,7 +313,7 @@ nav ul li a:hover::after {
 }
 
 .tab-contents ul li span {
-    color: #adfd4c;
+    color: #00a8e8;
     font-size: 14px;
 }
 
@@ -257,33 +353,47 @@ nav ul li a:hover::after {
     font-size: 13px;
     font-weight: 300;
     border-radius: 10px;
-    transition: background 0.5s, transform 0.5s, box-shadow 0.5s;
+    transition: background 0.5s, box-shadow 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.services-list div i,
+.services-list div h2,
+.services-list div p,
+.services-list div a {
+    position: relative;
+    z-index: 2;
 }
 
 .services-list div i {
     font-size: 50px;
     margin-bottom: 30px;
+    color: #00a8e8;
 }
 
 .services-list div h2 {
     font-size: 30px;
     font-weight: 500;
     margin-bottom: 15px;
+    color: #fff;
+}
 
+.services-list div p {
+    color: #ababab;
 }
 
 .services-list div a {
     text-decoration: none;
-    color: #fff;
-    font-size: 12px;
+    color: #00a8e8;
+    font-size: 13px;
     margin-top: 20px;
     display: inline-block;
-
+    letter-spacing: 0.5px;
 }
 
 .services-list div:hover {
-    background: #5f6a52;
-    transform: translateY(-10px);
+    background: #003566;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -303,11 +413,19 @@ nav ul li a:hover::after {
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+    height: 320px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
+.work:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(173, 253, 76, 0.1);
 }
 
 .work img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
     display: block;
     transition: transform 0.5s;
@@ -316,7 +434,7 @@ nav ul li a:hover::after {
 .layer {
     width: 100%;
     height: 0;
-    background-image: linear-gradient(to bottom, #9e719e, #000000);
+    background-image: linear-gradient(to bottom, #001233, #000000);
     border-radius: 10px;
     position: absolute;
     left: 0;
@@ -373,13 +491,14 @@ nav ul li a:hover::after {
 }
 
 .btn:hover {
-    background: #5f6a52;
+    background: #003566;
 
 }
 
 /*-----------------------contact-------------------*/
 .contact-left {
     flex-basis: 35%;
+    margin-bottom: 30px;
 }
 
 .contact-right {
@@ -388,17 +507,18 @@ nav ul li a:hover::after {
 
 .contact-left p {
     margin-top: 30px;
+    font-size: 16px;
 }
 
 .contact-left p i {
-    color: #adfd4c;
+    color: #00a8e8;
     margin-right: 15px;
     font-size: 25px;
-
 }
 
 .social-icons {
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 .social-icons a {
@@ -407,43 +527,54 @@ nav ul li a:hover::after {
     margin-right: 15px;
     color: #ababab;
     display: inline-block;
-    transition: transform 0.5s
+    transition: transform 0.5s, color 0.5s;
 }
 
 .social-icons a:hover {
-    color: #adfd4c;
-    transform: translateY(-5px)
-}
-
-.btn .btn2 {
-    display: inline-block;
-    color: #adfd4c;
-
+    color: #00a8e8;
+    transform: translateY(-5px);
 }
 
 .contact-right form {
     width: 100%;
-
 }
 
 form input,
 form textarea {
     width: 100%;
-    border: 0;
+    border: 1px solid transparent;
     outline: none;
     background-color: #262626;
-    padding: 15px;
-    margin: 15px 0;
-    color: #adfd4c;
-    font: 18px;
+    padding: 18px;
+    margin: 10px 0;
+    color: #fff;
+    font-size: 16px;
     border-radius: 6px;
+    transition: border 0.3s;
 }
 
-form btn2 {
-    padding: 14px 60px;
+form input:focus,
+form textarea:focus {
+    border: 1px solid #00a8e8;
+}
+
+form button {
+    padding: 16px 60px;
     font-size: 18px;
     margin-top: 20px;
     cursor: pointer;
+    width: fit-content;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background: #00a8e8;
+    transform: scale(1.02);
 }
 
 .copyright {
@@ -456,7 +587,7 @@ form btn2 {
 }
 
 .copyright i {
-    color: #adfd4c;
+    color: #00a8e8;
 }
 
 /* ----------css for small screen--------------- */
@@ -464,22 +595,59 @@ nav .fa-solid {
     display: none;
 }
 
-@media only screen and (max-width: 600px) {
-
-    #header {
-        /*background-image: url(images/phone-background.png); */
-        background-image: linear-gradient(to bottom, #000000, #9e719e);
+/* Tablet screens */
+@media only screen and (max-width: 900px) {
+    .container {
+        padding: 10px 5%;
     }
 
     .header-text {
         margin-top: 20%;
-        font-size: 16px;
         margin-left: 0;
         text-align: center;
-        padding: 0 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .header-text h1 {
+        font-size: 50px;
+    }
+
+    .about-col-1,
+    .about-col-2 {
+        flex-basis: 100%;
+    }
+
+    .about-col-1 {
+        margin-bottom: 40px;
+    }
+
+    .contact-left,
+    .contact-right {
+        flex-basis: 100%;
+    }
+}
+
+/* Mobile screens */
+@media only screen and (max-width: 600px) {
+
+    #header {
+        background-image: linear-gradient(to bottom, #000000, #001233);
+    }
+
+    .header-text {
+        margin-top: 25%;
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    .header-text h1 {
+        font-size: 35px;
+    }
+
+    .minimal-tagline {
+        font-size: 18px;
     }
 
     .header-buttons {
@@ -497,10 +665,6 @@ nav .fa-solid {
         text-align: center;
     }
 
-    .header-text h1 {
-        font-size: 30px;
-    }
-
     nav .fa-solid {
         display: block;
         font-size: 25px;
@@ -516,25 +680,21 @@ nav .fa-solid {
         padding-top: 50px;
         z-index: 2;
         transition: right 0.5s;
-        color: #9e719e;
+        color: #001233;
     }
 
     nav ul li {
         display: block;
         margin: 25px;
-
     }
 
     nav ul li a {
-        color: #9e719e;
-
+        color: #001233;
     }
 
     nav ul li a:hover {
-        color: #9e719e;
-        /* Set the hover color */
+        color: #001233;
     }
-
 
     nav ul .fa-solid {
         position: absolute;
@@ -544,21 +704,7 @@ nav .fa-solid {
     }
 
     .sub-title {
-        font-size: 40px;
-    }
-
-    .about-col-1,
-    .about-col-2 {
-        flex-basis: 100%;
-    }
-
-    .about-col-1 {
-        margin-bottom: 30px;
-
-    }
-
-    .about-col-2 {
-        font-size: 14px;
+        font-size: 35px;
     }
 
     .tab-links {
@@ -566,12 +712,224 @@ nav .fa-solid {
         margin-right: 20px;
     }
 
-    .contact-left,
-    .contact-right {
-        flex-basis: 100%;
+    .about-col-2 p.about-text {
+        font-size: 14px;
+    }
+
+    .work-list,
+    .services-list {
+        gap: 20px;
+        margin-top: 30px;
     }
 
     .copyright {
         font-size: 14px;
     }
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   DUAL-MODE: Discover Another Side Feature
+   ========================================== */
+
+/* Discover Button - Highlighted */
+.btn-discover {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 10px 24px;
+    background: transparent;
+    color: #00a8e8;
+    border: 1px solid #00a8e8;
+    border-radius: 50px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+    animation: discover-pulse 2s infinite;
+}
+
+@keyframes discover-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 168, 232, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 168, 232, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 168, 232, 0);
+    }
+}
+
+.btn-discover:hover {
+    color: #fff;
+    background: #00a8e8;
+    box-shadow: 0 0 20px rgba(0, 168, 232, 0.5);
+    animation: none;
+    /* Stop pulsing on hover */
+}
+
+.btn-discover-arrow {
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+.btn-discover:hover .btn-discover-arrow {
+    transform: translateX(5px);
+}
+
+body.trader-mode .btn-discover {
+    color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.3);
+    border-style: dashed;
+    animation: none;
+    /* Stop pulsing in trader mode */
+}
+
+body.trader-mode .btn-discover-arrow {
+    transform: rotate(180deg);
+}
+
+/* Hidden by default - Trader role label in hero */
+.trader-role-label {
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: bottom;
+    /* Fixes baseline alignment issues */
+    transition: opacity 0.8s ease 0.2s, max-width 0.8s ease 0.2s;
+    color: #00a8e8;
+}
+
+body.trader-mode .trader-role-label {
+    opacity: 1;
+    max-width: 200px;
+}
+
+/* Hidden by default - Trader paragraph in About */
+.trader-text {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    color: #ababab;
+    margin-top: 0;
+    transition: opacity 0.7s ease 0.3s, max-height 0.7s ease 0.3s, margin-top 0.5s ease;
+    border-left: 2px solid #00a8e8;
+    padding-left: 12px;
+}
+
+body.trader-mode .trader-text {
+    opacity: 1;
+    max-height: 200px;
+    margin-top: 16px;
+}
+
+/* Hidden by default - Analytical tab in nav */
+.trader-tab {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease 0.5s;
+}
+
+body.trader-mode .trader-tab {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Trading skills content block */
+.trader-tab-content {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+body.trader-mode .trader-tab-content.active-tab {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Candlestick background overlay on header */
+#header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+body.trader-mode #header::before {
+    opacity: 0;
+}
+
+/* Ensure header content z-index above overlay */
+#header .container,
+#header .header-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Trading Chart - Decorative Bottom-Right Hero Background */
+.trading-chart-wrapper {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.2s ease 0.2s;
+    z-index: 1;
+    mix-blend-mode: screen;
+    filter: blur(0.5px);
+    /* Gradient mask: transparent on left → visible on right */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.5) 58%, black 72%);
+    mask-image: linear-gradient(to right, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.5) 58%, black 72%);
+}
+
+.trading-chart-wrapper canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Gentle upward drift animation */
+@keyframes chartDrift {
+    0% {
+        transform: translateY(0px);
+    }
+
+    40% {
+        transform: translateY(-7px);
+    }
+
+    75% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Show when Discover Another Side is active */
+body.trader-mode .trading-chart-wrapper {
+    opacity: 0.22;
+    animation: chartDrift 9s ease-in-out infinite;
 }
