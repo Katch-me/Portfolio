@@ -875,20 +875,22 @@ body.trader-mode .btn-discover-arrow {
 
 /* Hidden by default - Trader role label in hero */
 .trader-role-label {
-    opacity: 0;
-    max-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    vertical-align: bottom;
-    /* Fixes baseline alignment issues */
-    transition: opacity 0.8s ease 0.2s, max-width 0.8s ease 0.2s;
-    color: #00a8e8;
+    display: none;
+    color: #00d4ff;
 }
 
 body.trader-mode .trader-role-label {
-    opacity: 1;
-    max-width: 200px;
+    display: inline;
+}
+
+/* Developer role label */
+.dev-role-label {
+    display: inline;
+    color: #00d4ff;
+}
+
+body.trader-mode .dev-role-label {
+    display: none;
 }
 
 /* Hidden by default - Trader paragraph in About */

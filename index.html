@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body class="trader-mode">
     <div class="mouse-glow"></div>
 
     <!-- Global Sticky Navbar -->
@@ -38,7 +38,9 @@
 
 
         <div class="header-text">
-            <p class="role-title">Frontend Developer | Web3 Enthusiast<span class="trader-role-label"> | Trader</span>
+            <p class="role-title">
+                <span class="trader-role-label">Financial Data Analyst | AI Engineer</span>
+                <span class="dev-role-label">Web3 & Software Developer</span>
             </p>
             <h1>Hi, I'm <span>Khushi Vasava</span></h1>
             <p class="minimal-tagline"><span class="typed-text"></span><span class="cursor">&nbsp;</span></p>
@@ -48,7 +50,7 @@
                 <a href="images/Resume.pdf" download class="btn btn-hero btn-secondary">Download Resume</a>
             </div>
             <button class="btn-discover" id="discoverBtn" onclick="discoverToggle()">
-                <span id="discoverBtnText">Discover Another Side</span>
+                <span id="discoverBtnText">Discover Developer Side</span>
                 <span class="btn-discover-arrow" id="discoverArrow">→</span>
             </button>
         </div>
@@ -163,9 +165,9 @@
             
             <!-- Category Filter Buttons -->
             <div class="work-filters">
-                <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-                <button class="filter-btn" onclick="filterProjects('webdev')">Web Dev & Web3</button>
-                <button class="filter-btn" onclick="filterProjects('dataai')">Data & AI / Finance</button>
+                <button class="filter-btn" onclick="filterProjects('all', this)">All</button>
+                <button class="filter-btn" onclick="filterProjects('webdev', this)">Web Dev & Web3</button>
+                <button class="filter-btn active" onclick="filterProjects('dataai', this)">Data & AI / Finance</button>
             </div>
 
             <div class="work-list">
@@ -368,17 +370,17 @@
 
         // Global arrays for typing animation (accessed by discoverToggle)
         var devTextArray = [
-            "Building seamless Web3 DApps.",
-            "Designing interactive UI/UX.",
-            "Crafting high-performance dashboards."
+            "Building Web3 DApps & smart contracts.",
+            "Designing interactive, high-performance interfaces.",
+            "Developing robust and secure backend APIs."
         ];
         var traderTextArray = [
-            "Building seamless Web3 DApps.",
-            "Designing interactive UI/UX.",
-            "Crafting high-performance dashboards.",
-            "Reading the markets, managing risk."
+            "Analyzing financial markets & price action.",
+            "Building GenAI financial statement analysis chatbots.",
+            "Extracting actionable telemetry data insights.",
+            "Designing interactive data & trading dashboards."
         ];
-        var textArray = devTextArray.slice();
+        var textArray = traderTextArray.slice();
 
         // Scroll Reveal & Typing Animation init
         document.addEventListener('DOMContentLoaded', () => {
@@ -454,6 +456,12 @@
             }
 
             if (textArray.length) setTimeout(type, newTextDelay + 250);
+
+            // Trigger chart animation and project filter if page lands in Trader/Finance mode
+            if (traderModeActive) {
+                animateTradingChart();
+                filterProjects('dataai');
+            }
         });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
@@ -475,7 +483,7 @@
 
     <script>
         // Dual-Mode Toggle: Discover Another Side
-        let traderModeActive = false;
+        let traderModeActive = true;
         let chartAnimationId = null;
         let chartRevealProgress = 0;
         function discoverToggle() {
@@ -486,7 +494,7 @@
 
             if (traderModeActive) {
                 body.classList.add('trader-mode');
-                btnText.textContent = 'Back to Developer Mode';
+                btnText.textContent = 'Discover Developer Side';
                 arrow.style.transform = 'rotate(180deg)';
                 // Swap typing array to include trader phrase
                 textArray.length = 0;
@@ -501,7 +509,7 @@
                 filterProjects('dataai');
             } else {
                 body.classList.remove('trader-mode');
-                btnText.textContent = 'Discover Another Side';
+                btnText.textContent = 'Discover Finance & Data Side';
                 arrow.style.transform = '';
                 // Reset typing array to dev phrases
                 textArray.length = 0;
