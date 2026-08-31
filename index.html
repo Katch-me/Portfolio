@@ -85,35 +85,35 @@
                     </div>
                     <div class="tab-contents active-tab" id="skills">
                         <ul>
-                            <li><span>Frontend</span><br>React, JavaScript, HTML, CSS, REST APIs</li>
-                            <li><span>Web3</span><br>Solidity, Smart Contracts, Ethers.js, MetaMask</li>
-                            <li><span>Backend</span><br>Node.js, MongoDB, JWT Authentication</li>
-                            <li><span>Tools</span><br>Git, Postman, Chart.js</li>
+                            <li><span>Programming & Data</span><br>Python, SQL, Pandas, NumPy, JavaScript, HTML, CSS</li>
+                            <li><span>Data Visualization</span><br>Power BI, Tableau, Matplotlib, Seaborn</li>
+                            <li><span>Web3 & Backend</span><br>Solidity, Smart Contracts, Node.js, MongoDB, Express, JWT, Ethers.js</li>
+                            <li><span>AI / GenAI</span><br>Generative AI, NLP, AI-assisted data analysis</li>
+                            <li><span>Tools</span><br>Jupyter Notebook, VS Code, Git, GitHub, Postman, Notion, Chart.js</li>
                         </ul>
                     </div>
 
                     <div class="tab-contents trader-tab-content" id="trading">
                         <ul>
-                            <li><span>Market Analysis</span><br>Technical Analysis, Chart Patterns, Price Action</li>
-                            <li><span>Risk Management</span><br>Position Sizing, Stop Loss Strategy, R:R Ratios</li>
-                            <li><span>Pattern Recognition</span><br>Candlestick Patterns, Support & Resistance, Trends
-                            </li>
-                            <li><span>Technical Indicators</span><br>EMA, RSI, MACD, Volume Analysis</li>
+                            <li><span>Market Analysis</span><br>Technical Analysis, Chart Patterns, Price Action, Gold/USD (XAUUSD)</li>
+                            <li><span>Risk Management</span><br>Position Sizing, Stop Loss Strategy, Risk-to-Reward (R:R) Ratios</li>
+                            <li><span>Pattern Recognition</span><br>Candlestick Patterns, Support & Resistance, Market Trends</li>
+                            <li><span>Community</span><br>~1,500 Instagram followers (khushi_frx), Reels with 100K+ and 1M+ views</li>
                         </ul>
                     </div>
 
                     <div class="tab-contents" id="experience">
                         <ul>
-                            <li><span>Sep-Oct 2024 </span><br>Backend Web Development</li>
-
+                            <li><span>2026 (Intern)</span><br>Frontend Developer Intern, Bluehole (OPC) Pvt. Ltd. — flutter development, UI workflows, API integration.</li>
+                            <li><span>2024 (Intern)</span><br>Backend Developer Intern, LogicLitz — Node.js, MongoDB, JWT auth, REST APIs, Postman.</li>
                         </ul>
                     </div>
 
                     <div class="tab-contents" id="education">
                         <ul>
-                            <li><span>2024 </span><br>Blockchain Fullstack Development from Codeater</li>
-                            <li><span>2022-2026 </span><br>Btech in CSE from Nirma University</li>
-                            <li><span>2020-2022 </span><br>Secondary and Higher Secondary </li>
+                            <li><span>2022 - 2026</span><br>B.Tech in CSE, Nirma University — CGPA: 8.37/10 (9.0 SGPA across last three semesters)</li>
+                            <li><span>In Progress</span><br>Diploma in Financial Accounting — Alison</li>
+                            <li><span>2024</span><br>Blockchain Fullstack Development — Codeater</li>
                         </ul>
                     </div>
 
@@ -160,31 +160,48 @@
     <div id="portfolio">
         <div class="container">
             <h1 class="sub-title">My Work</h1>
+            
+            <!-- Category Filter Buttons -->
+            <div class="work-filters">
+                <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+                <button class="filter-btn" onclick="filterProjects('webdev')">Web Dev & Web3</button>
+                <button class="filter-btn" onclick="filterProjects('dataai')">Data & AI / Finance</button>
+            </div>
+
             <div class="work-list">
 
-                <div class="work reveal">
+                <!-- Web Dev & Web3 projects -->
+                <div class="work reveal" data-category="webdev">
                     <img src="images/work-ai-workflow.png">
                     <div class="layer">
                         <h3>AI Workflow Builder</h3>
-                        <p>An AI-powered workflow orchestration tool for building and managing automated pipelines
-                            visually.</p>
+                        <p>An AI-powered workflow orchestration tool for building and managing automated pipelines visually.</p>
                         <a href="https://ai-workflow-orchestration.vercel.app/" target="_blank"><i
                                 class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
 
-                <div class="work reveal">
+                <div class="work reveal" data-category="webdev">
                     <img src="images/work-twitterdapp.png">
                     <div class="layer">
                         <h3>Twitter DApp</h3>
-                        <p>A Web3 decentralized micro-blogging platform where users can post notes via smart contracts.
-                        </p>
+                        <p>A Web3 decentralized micro-blogging platform where users can post notes via smart contracts.</p>
                         <a href="https://twitter-dapp-tan.vercel.app/" target="_blank"><i
                                 class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
 
-                <div class="work reveal">
+                <div class="work reveal" data-category="webdev">
+                    <img src="images/work-pdfverse.jpg">
+                    <div class="layer">
+                        <h3>PDF-VERSE</h3>
+                        <p>A Node.js & MongoDB backend web application for PDF upload, compression, and JWT-authenticated management.</p>
+                        <a href="https://github.com/Katch-me" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="work reveal" data-category="webdev">
                     <img src="images/work-shareablenotes.png">
                     <div class="layer">
                         <h3>Shareable Notes</h3>
@@ -194,10 +211,49 @@
                     </div>
                 </div>
 
+                <!-- Data & AI / Finance projects -->
+                <div class="work reveal" data-category="dataai">
+                    <img src="images/work-financial-chatbot.jpg">
+                    <div class="layer">
+                        <h3>AI Financial Chatbot</h3>
+                        <p>Year-over-year financial statement analysis chatbot for Microsoft, Apple, and Tesla built with Python and GenAI.</p>
+                        <a href="https://github.com/Katch-me" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
 
+                <div class="work reveal" data-category="dataai">
+                    <img src="images/work-daikibo-telemetry.jpg">
+                    <div class="layer">
+                        <h3>Daikibo Telemetry Analysis</h3>
+                        <p>Investigation of downtime hotspots on 160,000+ JSON machine telemetry records using Python & Tableau.</p>
+                        <a href="https://github.com/Katch-me" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="work reveal" data-category="dataai">
+                    <img src="images/work-intrusion-detection.jpg">
+                    <div class="layer">
+                        <h3>Intelligent Intrusion Detection</h3>
+                        <p>Deep Learning intrusion detection research using Random Forest & GRU/LSTM networks on the CICIDS-2017 dataset.</p>
+                        <a href="https://github.com/Katch-me" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="work reveal" data-category="dataai">
+                    <img src="images/work-job-simulations.jpg">
+                    <div class="layer">
+                        <h3>Industry Job Simulations</h3>
+                        <p>Practical risk profiling, options analysis, and GenAI chatbot advisory simulations for BCG X, Tata, Deloitte, and PNC.</p>
+                        <a href="https://github.com/Katch-me" target="_blank"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
 
             </div>
-            <a href="#" class="btn">See more</a>
+            <a href="https://github.com/Katch-me" target="_blank" class="btn">See more on GitHub</a>
 
         </div>
     </div>
@@ -249,6 +305,54 @@
 
             event.currentTarget.classList.add("active-link");
             document.getElementById(tabname).classList.add("active-tab");
+        }
+
+        function filterProjects(category, btnEl) {
+            // Update active state of filter buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (btnEl) {
+                btnEl.classList.add('active');
+            } else {
+                // Programmatic selection matching the category string
+                const btnArray = Array.from(buttons);
+                const targetBtn = btnArray.find(btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${category}'`));
+                if (targetBtn) targetBtn.classList.add('active');
+            }
+
+            // Filter the project cards with animation
+            const cards = document.querySelectorAll('.work');
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                card.classList.remove('show');
+                
+                if (category === 'all' || cardCategory === category) {
+                    card.classList.remove('hide');
+                    // Force a layout reflow to restart CSS animations
+                    void card.offsetWidth;
+                    card.classList.add('show');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+
+            // Reinitialize VanillaTilt on visible cards to ensure tilt works on filtered lists
+            if (window.VanillaTilt) {
+                cards.forEach(card => {
+                    if (card.vanillaTilt) {
+                        card.vanillaTilt.destroy();
+                    }
+                });
+                
+                const visibleCards = document.querySelectorAll('.work:not(.hide)');
+                VanillaTilt.init(visibleCards, {
+                    max: 15,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.2
+                });
+            }
         }
     </script>
 
@@ -374,7 +478,6 @@
         let traderModeActive = false;
         let chartAnimationId = null;
         let chartRevealProgress = 0;
-
         function discoverToggle() {
             traderModeActive = !traderModeActive;
             const body = document.body;
@@ -393,6 +496,9 @@
                 chartRevealProgress = 0;
                 if (chartAnimationId) cancelAnimationFrame(chartAnimationId);
                 animateTradingChart();
+
+                // Auto-filter projects to Data & AI / Finance
+                filterProjects('dataai');
             } else {
                 body.classList.remove('trader-mode');
                 btnText.textContent = 'Discover Another Side';
@@ -403,9 +509,11 @@
 
                 // Stop animation to save CPU
                 if (chartAnimationId) cancelAnimationFrame(chartAnimationId);
+
+                // Reset project filter to all
+                filterProjects('all');
             }
         }
-
         // ---- Decorative Candlestick Chart Animated ----
         // Data constant
         const candles = [

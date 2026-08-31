@@ -400,14 +400,62 @@ nav ul li a:hover::after {
 
 #portfolio {
     padding: 50px 0;
+}
 
+/* Project Filter Buttons */
+.work-filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #ababab;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn:hover {
+    color: #fff;
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    border-color: #00f0ff;
+    color: #fff;
+    box-shadow: 0 0 18px rgba(0, 180, 216, 0.45);
+    font-weight: 600;
+}
+
+/* Trader Mode adjustments for filter buttons */
+body.trader-mode .filter-btn.active {
+    background: linear-gradient(135deg, #0096c7, #03045e);
+    border-color: #00b4d8;
+    box-shadow: 0 0 18px rgba(0, 150, 199, 0.4);
 }
 
 .work-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 40px;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .work {
@@ -418,9 +466,28 @@ nav ul li a:hover::after {
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.work.hide {
+    display: none !important;
+}
+
+.work.show {
+    animation: fadeInScale 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
 .work:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(173, 253, 76, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 212, 255, 0.2);
 }
 
 .work img {
