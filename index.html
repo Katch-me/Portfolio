@@ -124,34 +124,44 @@
         </div>
     </div>
 
-    <!------------------------services------------------------>
+    <!------------------------services / Where Finance Meets Data------------------------>
 
     <div id="services">
         <div class="container">
-            <h1 class="sub-title reveal">What I Build</h1>
+            <h1 class="sub-title reveal">Where Finance Meets Data</h1>
+            <p class="services-subtitle reveal">What I Do</p>
             <div class="services-list">
-                <div>
-                    <i class="fa-solid fa-code"></i>
-                    <h2>Frontend Applications</h2>
-                    <p>Building responsive, scalable and performance-optimized web applications using modern JavaScript
-                        frameworks.</p>
-                    <a href="#">Learn more</a>
+                <div class="reveal">
+                    <i class="fa-solid fa-file-invoice-dollar service-icon"></i>
+                    <h2>Financial Analysis</h2>
+                    <p>Analyzing companies, financial statements, fundamentals, valuation, and financial performance to uncover meaningful insights.</p>
+                    <p class="service-meta">Fundamentals &bull; Financial Statements &bull; Valuation &bull; Company Research</p>
+                    <a href="#portfolio">Learn more &rarr;</a>
                 </div>
 
-
-                <div>
-                    <i class="fa-solid fa-crop"></i>
-                    <h2>Web3 / DApps</h2>
-                    <p>Developing decentralized applications with smart contracts, wallet integration, and blockchain
-                        interaction.</p>
-                    <a href="#">Learn more </a>
+                <div class="reveal">
+                    <i class="service-icon-wrap">
+                        <svg class="service-icon" width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="12" y1="8" x2="12" y2="40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="8" y="16" width="8" height="15" rx="1.5" fill="currentColor"/>
+                            <line x1="24" y1="5" x2="24" y2="43" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="20" y="11" width="8" height="22" rx="1.5" fill="currentColor"/>
+                            <line x1="36" y1="10" x2="36" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <rect x="32" y="15" width="8" height="14" rx="1.5" fill="currentColor"/>
+                        </svg>
+                    </i>
+                    <h2>Market &amp; Trading Research</h2>
+                    <p>Studying financial markets, price behaviour, trends, technical signals, and trading opportunities through data-driven research.</p>
+                    <p class="service-meta">Market Analysis &bull; Technical Analysis &bull; Price Action &bull; Trading Research</p>
+                    <a href="#portfolio">Learn more &rarr;</a>
                 </div>
 
-                <div>
-                    <i class="fa-brands fa-app-store"></i>
-                    <h2>Data Dashboards</h2>
-                    <p>Creating interactive dashboards and real-time data visualization tools with clean UI.</p>
-                    <a href="#">Learn more </a>
+                <div class="reveal">
+                    <i class="fa-solid fa-chart-column service-icon"></i>
+                    <h2>Data Analytics</h2>
+                    <p>Transforming financial and market data into structured insights, analytical models, visualizations, and actionable findings.</p>
+                    <p class="service-meta">Python &bull; SQL &bull; Data Visualization &bull; Dashboards &bull; Statistical Analysis</p>
+                    <a href="#portfolio">Learn more &rarr;</a>
                 </div>
 
             </div>
@@ -225,7 +235,7 @@
                 </div>
 
                 <div class="work reveal" data-category="dataai">
-                    <img src="images/work-daikibo-telemetry.jpg">
+                    <img src="images/work-daikibo-telemetry.png" alt="Daikibo Telemetry Analysis" style="object-fit: contain; background: #ffffff;">
                     <div class="layer">
                         <h3>Daikibo Telemetry Analysis</h3>
                         <p>Investigation of downtime hotspots on 160,000+ JSON machine telemetry records using Python & Tableau.</p>
@@ -245,7 +255,7 @@
                 </div>
 
                 <div class="work reveal" data-category="dataai">
-                    <img src="images/work-job-simulations.jpg">
+                    <img src="images/work-job-simulations.png" alt="Industry Job Simulations" style="object-fit: contain; background: #ffffff;">
                     <div class="layer">
                         <h3>Industry Job Simulations</h3>
                         <p>Practical risk profiling, options analysis, and GenAI chatbot advisory simulations for BCG X, Tata, Deloitte, and PNC.</p>
@@ -473,7 +483,7 @@
             "max-glare": 0.2
         });
 
-        VanillaTilt.init(document.querySelectorAll(".services-list div"), {
+        VanillaTilt.init(document.querySelectorAll(".services-list > div"), {
             max: 10,
             speed: 400,
             glare: true,
